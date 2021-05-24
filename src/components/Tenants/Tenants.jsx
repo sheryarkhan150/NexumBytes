@@ -221,6 +221,7 @@ const Tenants = () => {
                             </Button>
                           </span>
                           <Table
+                            rowKey={(data) => data.id}
                             columns={columns}
                             dataSource={tenantsData}
                             pagination={{ pageSize: 10 }}

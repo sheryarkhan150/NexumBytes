@@ -5,8 +5,8 @@ import Axios from "../../libs/axios";
 import OnlineContext from "../../context/online.context";
 
 const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 8 },
+  labelCol: { span: 7 },
+  wrapperCol: { span: 17 },
 };
 const tailLayout = {
   wrapperCol: { offset: 8, span: 8 },
@@ -51,16 +51,20 @@ const AdminSignUp = () => {
       {online ? (
         <Redirect to="/" />
       ) : (
-        <div>
-          <h1 className="heading">Sign Up</h1>
+        <>
+          <div className="text-center text-muted mb-4">
+            <small>Sign up</small>
+          </div>
           <Form
             {...layout}
+            style={{ maxWidth: "300px" }}
             name="basic"
             initialValues={{ remember: true }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
           >
             <Form.Item
+              className="form-group mb-3"
               label="First Name"
               name="firstName"
               rules={[
@@ -74,9 +78,10 @@ const AdminSignUp = () => {
                 },
               ]}
             >
-              <Input />
+              <Input style={{ borderColor: "#5e72e4" }} />
             </Form.Item>
             <Form.Item
+              className="form-group mb-3"
               label="Last Name"
               name="lastName"
               rules={[
@@ -90,9 +95,10 @@ const AdminSignUp = () => {
                 },
               ]}
             >
-              <Input />
+              <Input style={{ borderColor: "#5e72e4" }} />
             </Form.Item>
             <Form.Item
+              className="form-group mb-3"
               label="Username"
               name="userName"
               rules={[
@@ -103,13 +109,14 @@ const AdminSignUp = () => {
                 {
                   pattern: new RegExp(/^[a-z0-9_.]{5,20}$/gim),
                   message:
-                    "Username should be minimum 5 and maximum 20 characters, alphanumeric characters, numbers, underscore and dot",
+                    "alphanumeric characters, numbers, underscore and dot are allowed",
                 },
               ]}
             >
-              <Input />
+              <Input style={{ borderColor: "#5e72e4" }} />
             </Form.Item>
             <Form.Item
+              className="form-group mb-3"
               label="Email"
               name="email"
               rules={[
@@ -120,10 +127,11 @@ const AdminSignUp = () => {
                 },
               ]}
             >
-              <Input />
+              <Input style={{ borderColor: "#5e72e4" }} />
             </Form.Item>
 
             <Form.Item
+              className="form-group mb-3"
               label="Password"
               name="password"
               rules={[
@@ -140,17 +148,28 @@ const AdminSignUp = () => {
                 },
               ]}
             >
-              <Input.Password />
+              <Input.Password style={{ borderColor: "#5e72e4" }} />
             </Form.Item>
 
-            <Form.Item {...tailLayout}>
-              <Button type="primary" htmlType="submit" loading={confirmLoading}>
+            <Form.Item className="form-group mb-3" {...tailLayout}>
+              <Button
+                style={{
+                  backgroundColor: "##5e72e4",
+                  borderColor: "#5e72e4",
+                  background: "#5e72e4",
+                  borderRadius: "7px",
+                  padding: "4px 20px",
+                }}
+                type="primary"
+                htmlType="submit"
+                loading={confirmLoading}
+              >
                 Submit
               </Button>
             </Form.Item>
           </Form>
           {signedUp ? <Redirect to="/login" /> : null}
-        </div>
+        </>
       )}
     </>
   );

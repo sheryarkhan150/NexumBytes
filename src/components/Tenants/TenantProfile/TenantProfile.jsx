@@ -213,7 +213,7 @@ const TenantProfile = () => {
                         columns={columns}
                         dataSource={tenantAdmins}
                         pagination={{ pageSize: 10 }}
-                        key="table"
+                        rowKey={(data) => data.id}
                         style={{
                           borderRadius: "15px",
                           width: "100%",
@@ -250,7 +250,10 @@ const TenantProfile = () => {
                             </div>
                             <div className="col-lg-6">
                               <Link to={`/subscription-plans/${id}`}>
-                                <button className="btn btn-info" type="button">
+                                <button
+                                  className="btn btn-primary"
+                                  type="button"
+                                >
                                   Tenant Subscription
                                 </button>
                               </Link>
@@ -318,7 +321,7 @@ const TenantProfile = () => {
                               </div>
                             </div>
                           </div>
-                          <button className="btn btn-info" type="submit">
+                          <button className="btn btn-primary" type="submit">
                             Update Tenant
                           </button>
                         </div>

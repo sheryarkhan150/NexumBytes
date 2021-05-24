@@ -63,7 +63,7 @@ const TenantFranchises = ({ tenantId, tenantAdmins }) => {
         columns={columns}
         dataSource={franchises}
         pagination={{ pageSize: 10 }}
-        key="table"
+        rowKey={(data) => data.id}
         loading={1}
         style={{
           borderRadius: "15px",

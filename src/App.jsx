@@ -15,6 +15,7 @@ import MainLayout from "./Layouts/MainLayout";
 import TenantSubscriptions from "./components/Tenants/TenantSubscriptions/TenantSibscriptions";
 import Subscriptions from "./components/Subscriptions/Subscriptions";
 import AllFranchises from "./components/AllFranchises/AllFranchises";
+import AuthLayout from "./Layouts/AuthLayout";
 
 function App() {
   const [token, setToken] = useState();
@@ -66,11 +67,14 @@ function App() {
           <Router>
             {/* <Header /> */}
             <Switch>
+              <Route path="/testing">
+                <AuthLayout ComponentFromApp={AdminLogin} />
+              </Route>
               <Route path="/login">
-                <AdminLogin setToken={setToken} />
+                <AuthLayout ComponentFromApp={AdminLogin} setToken={setToken} />
               </Route>
               <Route path="/signup">
-                <AdminSignUp />
+                <AuthLayout ComponentFromApp={AdminSignUp} />
               </Route>
               <Route path="/user/:id">
                 <MainLayout ComponentFromApp={UserProfile} />

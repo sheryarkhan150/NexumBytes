@@ -160,7 +160,7 @@ const Subscriptions = () => {
                       columns={columns}
                       dataSource={subs}
                       pagination={{ pageSize: 10 }}
-                      key="table"
+                      rowKey={(data) => data.id}
                       scroll={{ y: 500 }}
                     />
                   </div>

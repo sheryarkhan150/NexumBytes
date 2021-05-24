@@ -5,6 +5,7 @@ import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 import { Link, useParams } from "react-router-dom";
 import "./sublist.css";
 import EditTenantSub from "./EditTenantSub";
+import AddSubscription from "../../Subscriptions/AddSubscription";
 
 const TenantSubscriptions = () => {
   const { tenantId } = useParams();
@@ -12,6 +13,7 @@ const TenantSubscriptions = () => {
   const [subscriptionPlans, setSubscriptionPlans] = useState([]);
   const [editModal, setEditModal] = useState(false);
   const [modalSub, setModalSub] = useState();
+  const [addModal, setAddModal] = useState(false);
 
   const getTenantPackages = useCallback(async () => {
     const result = await Axios.get(`/tenant/${tenantId}/package`);
@@ -144,14 +146,31 @@ const TenantSubscriptions = () => {
             columns={columns}
             dataSource={subscriptionPlans}
             pagination={{ pageSize: 10 }}
-            key="table"
+            rowKey={(data) => data.id}
             scroll={{ y: 500 }}
             style={{ width: "85%", margin: "auto" }}
           />
         </div>
-        <button className="btn btn-info" type="button">
+        <button
+          className="btn btn-primary my-4"
+          type="button"
+          onClick={() => setAddModal(true)}
+        >
           Add Subscription
         </button>
+        <Modal
+          title="Add Subscription"
+          centered
+          visible={addModal}
+          onCancel={() => setAddModal(false)}
+          footer={[]}
+          // okButtonProps={{ disabled: disableOk }}
+        >
+          <AddSubscription
+            setAddModal={setAddModal}
+            getSubscriptions={getTenantPackages}
+          />
+        </Modal>
         <div className="container-fluid d-flex align-items-center"></div>
       </div>
     </div>

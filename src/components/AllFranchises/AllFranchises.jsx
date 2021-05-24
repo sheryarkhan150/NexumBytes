@@ -62,7 +62,7 @@ const AllFranchises = () => {
                       columns={columns}
                       dataSource={franchises}
                       pagination={{ pageSize: 10 }}
-                      key="table"
+                      rowKey={(data) => data.id}
                       scroll={{ y: 500 }}
                       loading={1}
                     />

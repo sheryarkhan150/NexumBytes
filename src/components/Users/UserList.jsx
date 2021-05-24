@@ -273,7 +273,7 @@ const UserList = () => {
         columns={columns}
         dataSource={data}
         pagination={{ pageSize: 10 }}
-        key={data.id}
+        rowKey={(data) => data.id}
         scroll={{ y: 500 }}
       />
     </div>

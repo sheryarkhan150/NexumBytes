@@ -5,8 +5,8 @@ import Axios from "../../libs/axios";
 import OnlineContext from "../../context/online.context";
 
 const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 8 },
+  labelCol: { span: 7 },
+  wrapperCol: { span: 17 },
 };
 const tailLayout = {
   wrapperCol: { offset: 8, span: 8 },
@@ -51,10 +51,12 @@ const AdminLogin = ({ setToken }) => {
     setUserFound(false);
   };
   return (
-    <div>
+    <>
       {!online ? (
         <>
-          <h1 className="heading">Sign in</h1>
+          <div className="text-center text-muted mb-4">
+            <small>Sign in with credentials</small>
+          </div>
           <Form
             {...layout}
             name="basic"
@@ -73,7 +75,13 @@ const AdminLogin = ({ setToken }) => {
                 },
               ]}
             >
-              <Input />
+              <Input
+                style={{
+                  backgroundColor: "##5e72e4",
+                  borderColor: "#5e72e4",
+                  background: "#5e72e4",
+                }}
+              />
             </Form.Item>
 
             <Form.Item
@@ -83,7 +91,12 @@ const AdminLogin = ({ setToken }) => {
                 { required: true, message: "Please input your password" },
               ]}
             >
-              <Input.Password />
+              <Input.Password
+                style={{
+                  backgroundColor: "##5e72e4",
+                  borderColor: "#5e72e4",
+                }}
+              />
             </Form.Item>
             {showReset ? (
               <>
@@ -100,7 +113,19 @@ const AdminLogin = ({ setToken }) => {
             ) : null}
 
             <Form.Item {...tailLayout}>
-              <Button type="primary" htmlType="submit" loading={confirmLoading}>
+              <Button
+                className="my-4"
+                htmlType="submit"
+                loading={confirmLoading}
+                type="primary"
+                style={{
+                  backgroundColor: "##5e72e4",
+                  borderColor: "#5e72e4",
+                  background: "#5e72e4",
+                  borderRadius: "7px",
+                  padding: "4px 20px",
+                }}
+              >
                 Submit
               </Button>
             </Form.Item>
@@ -110,7 +135,7 @@ const AdminLogin = ({ setToken }) => {
       ) : (
         <Redirect to="/" />
       )}
-    </div>
+    </>
   );
 };
 
