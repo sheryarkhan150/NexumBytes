@@ -1,0 +1,5 @@
+{
+  "apiUrl": "http://localhost:3000/api",
+  "apiUrl1": "https://telecom-erp-node-api.herokuapp.com/api",
+  "apiUrl2": "http://localhost:3000/api"
+}
